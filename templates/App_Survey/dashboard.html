@@ -1,0 +1,194 @@
+{% extends 'layouts/base.html' %} 
+{% load static %} 
+{% block span_block %} 
+{% endblock span_block %}
+<!-- {{ current_user_email }} -->
+{% block body_block %}
+
+<div class="row">
+  <div class="col-xl-3">
+    <div
+      class="card card-default"
+      style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)"
+    >
+      <div class="card-header">
+        <h2>Total Submissions</h2>
+      </div>
+      <div class="card-body">
+        <div
+          class="bg-primary d-flex justify-content-between flex-wrap p-5 text-white align-items-lg-end"
+        >
+          <div class="d-flex flex-column">
+            <span class="h3 text-white">{{ total_complaints }}</span>
+          </div>
+        </div>
+        <!-- <div id="line-chart-1"></div> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <!-- Session -->
+    <div
+      class="card card-default"
+      style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)"
+    >
+      <div class="card-header">
+        <h2>Total Complains</h2>
+      </div>
+      <div class="card-body">
+        <div
+          class="bg-danger d-flex justify-content-between flex-wrap p-5 text-white align-items-lg-end"
+        >
+          <div class="d-flex flex-column">
+            <div>
+              <span class="h3 text-white"
+                >{{ total_complain }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <div
+      class="card card-default"
+      style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)"
+    >
+      <div class="card-header">
+        <h2>Total Feedbacks</h2>
+      </div>
+      <div class="card-body">
+        <div
+          class="bg-secondary d-flex justify-content-between flex-wrap p-5 text-white align-items-lg-end"
+        >
+          <div class="d-flex flex-column">
+            <span class="h3 text-white">{{ total_feedback }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3">
+    <div
+      class="card card-default"
+      style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)"
+    >
+      <div class="card-header">
+        <h2>Total Resolved</h2>
+      </div>
+      <div class="card-body">
+        <div
+          class="bg-success d-flex justify-content-between flex-wrap p-5 text-white align-items-lg-end"
+        >
+          <div class="d-flex flex-column">
+            <span class="h3 text-white">{{ total_resolved_complaints }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card card-default" style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)">
+      <div class="card-header">
+        <h2>Complain By Category</h2>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled mt-4"  style="font-size: 20px;">
+          <li
+            class="d-flex flex-wrap justify-content-between border-top py-2 text-dark"
+          >
+            Foreign Material
+            <span class="text-success"
+              >{{ category_status_counts.Foreign_Material }}</span
+            >
+          </li>
+          <li
+            class="d-flex flex-wrap justify-content-between border-top py-2 text-dark"
+          >
+            Personal Hygiene
+            <span class="text-danger"
+              >{{ category_status_counts.Personal_Hygiene }}</span
+            >
+          </li>
+          <li
+            class="d-flex flex-wrap justify-content-between border-top py-2 text-dark"
+          >
+            Food Quality
+            <span class="text-danger"
+              >{{ category_status_counts.Food_Quality }}</span
+            >
+          </li>
+          <li
+            class="d-flex flex-wrap justify-content-between border-top py-2 text-dark"
+          >
+            Others
+            <span class="text-danger">{{ category_status_counts.Others }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6">
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="card card-default" style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)">
+          <div class="card-body">
+            <ul class="list-unstyled mt-2"  style="font-size: 20px;">
+              <li
+                class="d-flex flex-wrap justify-content-between border-top py-4 text-dark"
+              >
+              <h6 style="margin-right: 10px;">All Complains<span class="text-primary">
+                <a href="{% url 'App_Survey:export_complaints_csv' %}" class="btn btn-success btn-sm">CSV <span class="mdi mdi-download" style="font-size: 16px;"></span>
+                </a>
+               </span>
+              </h6>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="card card-default" style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)">
+          <div class="card-body">
+            <ul class="list-unstyled mt-2"  style="font-size: 20px;">
+              <li
+                class="d-flex flex-wrap justify-content-between border-top py-4 text-dark"
+              >
+              <h6 style="margin-right: 10px;">All Feedbacks<span class="text-primary">
+                <a href="{% url 'App_Survey:export_feedback_csv' %}" class="btn btn-success btn-sm">CSV <span class="mdi mdi-download" style="font-size: 16px;"></span>
+                </a>
+               </span>
+              </h6>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-default" style="box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1)">
+      <!-- <div class="card-header">
+        <h2>Solutions From Khabardabar</h2> 
+      </div> -->
+      <div class="card-body">
+        <ul class="list-unstyled mt-0"  style="font-size: 20px;">
+          <li
+            class="d-flex flex-wrap justify-content-between border-top py-4 text-dark"
+          >
+          <h6 style="margin-right: 5px;">Solutions From Khabardabar<span class="text-primary">
+           
+              <a href="{% url 'App_Survey:export_solution_csv' %}" class="btn btn-success btn-sm">CSV<span class="mdi mdi-download" style="font-size: 16px;"></span></a>
+            </h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

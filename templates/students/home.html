@@ -1,0 +1,31 @@
+{% extends 'students/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+    
+            <div class="card text-center shadow">
+                <!-- Static Image on top of the card -->
+                <div class="card-headers">
+                    <a href="{% url 'App_Survey:home' %}"><img src="{% static 'Img/KDC-Logo.webp' %}" alt="Logo" class="header-logo"></a>
+                    
+                </div>
+
+                <div class="card-body mt-2 mb-5">
+                    <!-- Feedback Button at the top -->
+                    <a href="{% url 'App_Survey:submit_suggestion' %}"  style="background-color:rgb(28, 116, 167)" class="btn btn-primary btn-lg btn-block shadow-button mb-4">
+                        Feedback
+                    </a>
+
+                    <a href="{% url 'App_Survey:submit_complain' %}" style="background-color:red" class="btn btn-danger btn-lg btn-block shadow-button mb-4">
+                        Complain
+                    </a>
+
+                    <!-- Resolved Button at the bottom with hover effect -->
+                    <a href="{% url 'App_Survey:search_resolved_complain' %}" style="background-color:green" class="btn btn-success btn-lg btn-block shadow-button resolved-btn" >
+                        Resolved
+                    </a>
+                </div>
+            </div>
+        
+</div>
+{% endblock %}

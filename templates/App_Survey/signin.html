@@ -1,0 +1,161 @@
+{% load socialaccount %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <head>
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <title>Sign In | KDC</title>
+
+      <!-- GOOGLE FONTS -->
+      <link
+        href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto"
+        rel="stylesheet"
+      />
+      <link
+        href="{% static 'assets/template1/plugins/material/css/materialdesignicons.min.css' %}"
+        rel="stylesheet"
+      />
+      <link
+        href="{% static 'assets/template1/plugins/simplebar/simplebar.css' %}"
+        rel="stylesheet"
+      />
+
+      <!-- PLUGINS CSS STYLE -->
+      <link
+        href="{% static 'assets/template1/plugins/nprogress/nprogress.css' %}"
+        rel="stylesheet"
+      />
+
+      <link
+        id="main-css-href"
+        rel="stylesheet"
+        href="{% static 'assets/template1/css/style.css' %}"
+      />
+      <!-- FAVICON -->
+      <link
+        href="{% static 'assets/template1/images/KDC-Logo.webp' %}"
+        rel="shortcut icon"
+      />
+      <script src="{% static 'assets/template1/plugins/nprogress/nprogress.js' %}"></script>
+    </head>
+  </head>
+  <style>
+    .btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4285F4; /* Google's blue color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-google:hover {
+    background-color: #357ae8; /* Slightly darker blue on hover */
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.btn-google img {
+    display: inline-block;
+}
+
+.btn-google:focus {
+    outline: none;
+}
+  </style>
+  <body class="bg-dark" id="body">
+    <div
+      class="container d-flex align-items-center justify-content-center"
+      style="min-height: 100vh"
+    >
+      <div class=" ">
+        <!-- <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-10"> -->
+            <div class="card  mb-0" style="max-width: 445px; width: 100%; padding-top: 1.875rem;">
+              <div class="card-header pb-0">
+                <div
+                  class="app-brand "
+                >
+                  <a class="w-auto pl-0" href="#">
+                    <img
+                      src="{% static 'assets/template1/images/KDC-Logo.webp' %}"
+                      alt="KDC-Logo"
+                    />
+                    <!-- <span class="brand-name text-dark">DYNAMIX</span> -->
+                  </a>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4 class="text-primary mb-6 text-center mt-5"><b><i><u>Admin Login</u></i></b></h4>
+
+                {% if messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <a href="{% url 'App_Survey:admin_login' %}"><span aria-hidden="true">×</span></a>
+                    </button>
+                </div>
+                {% endif %}
+
+                <form action="{% url 'App_Survey:admin_login' %}" method="POST">
+                  {% csrf_token %}
+
+                  <div class="row">
+                    <div class="form-group col-md-12 mb-4">
+                      <input
+                        type="text"
+                        class="form-control input-lg"
+                        id="username"
+                        name="username"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Your Email"
+                      />
+                    </div>
+                    <div class="form-group col-md-12">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control input-lg"
+                        placeholder="Enter your password"
+                      />
+                    </div>
+                    <div class="col-md-12">
+                      <div class="d-flex justify-content-between mb-4">
+                        <button type="submit" class="btn btn-primary btn-pill">
+                          Log In
+                        </button>
+                        
+                        <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-pill" style="display: flex; align-items: center;">
+                          <span class="mdi mdi-google" style="margin-right: 10px;"></span>Login with Google
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          <!-- </div>
+        </div> -->
+      </div>
+    </div>
+  </body>
+</html>

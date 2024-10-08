@@ -1,0 +1,75 @@
+{% load static %}
+  <div id="sidebar" class="sidebar sidebar-with-footer">
+    <!-- Aplication Brand -->
+    <div class="app-brand mb-4 dashbord_image">
+      <a href="#">
+        <img src="{% static 'assets/template1/images/KDC-Logo.webp' %}" alt="KDC" />
+        <!-- <span class="brand-name">DYNAMIX</span> -->
+      </a>
+    </div>
+    <!-- begin sidebar scrollbar -->
+    <div class="sidebar-left" data-simplebar style="height: 100%">
+      <!-- sidebar menu -->
+      <ul class="nav sidebar-inner" id="sidebar-menu">
+          <li class="{% if request.resolver_match.url_name == 'admin_dashboard' %}active{% endif %}">
+              <a class="sidenav-item-link" href="{% url 'App_Survey:admin_dashboard' %}">
+                  <i class="mdi mdi-briefcase-account-outline"></i>
+                  <span class="nav-text">Dashboard</span>
+              </a>
+          </li>
+  
+          <li class="section-title">Users</li>
+  
+          <li class="{% if request.resolver_match.url_name == 'user_profile_list' %}active{% endif %}">
+              <a class="sidenav-item-link" href="{% url 'App_Survey:user_profile_list' %}">
+                  <i class="mdi mdi-account-group"></i>
+                  <span class="nav-text">All Profiles</span>
+              </a>
+          </li>
+  
+          <li class="section-title">Apps</li>
+  
+          <li class="{% if request.resolver_match.url_name == 'complaint_list' %}active{% endif %}">
+              <a class="sidenav-item-link" href="{% url 'App_Survey:complaint_list' %}">
+                  <i class="mdi mdi-format-list-checks"></i>
+                  <span class="nav-text">All Complains</span>
+              </a>
+          </li>
+          <li class="{% if request.resolver_match.url_name == 'suggestion_list' %}active{% endif %}">
+              <a class="sidenav-item-link" href="{% url 'App_Survey:suggestion_list' %}">
+                  <i class="mdi mdi-format-list-checks"></i>
+                  <span class="nav-text">All Feedbacks</span>
+              </a>
+          </li>
+  
+          <li class="{% if request.resolver_match.url_name == 'resolved' %}active{% endif %}">
+              <a class="sidenav-item-link" href="{% url 'App_Survey:resolved' %}">
+                  <i class="mdi mdi-calendar-check"></i>
+                  <span class="nav-text">All Resolved</span>
+              </a>
+          </li>
+  
+      </ul>
+  </div>
+
+    <!-- <div class="sidebar-footer">
+      <div class="sidebar-footer-content">
+        <ul class="d-flex">
+          <li>
+            <a
+              href="user-account-settings.html"
+              data-toggle="tooltip"
+              title="Profile settings"
+              ><i class="mdi mdi-settings"></i
+            ></a>
+          </li>
+          <li>
+            <a href="#" data-toggle="tooltip" title="No chat messages"
+              ><i class="mdi mdi-chat-processing"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div> -->
+  </div>
+
